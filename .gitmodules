@@ -1,0 +1,3 @@
+[submodule "upstream"]
+	path = upstream
+	url = http://git.code.sf.net/p/libvncserver/code
