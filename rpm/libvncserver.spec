@@ -7,6 +7,7 @@ Group:          Libraries/Network
 Packager:       Reto Zingg <reto.zingg@jolla.com>
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  libjpeg-turbo-devel
+BuildRequires:  pkgconfig(zlib)
 Summary: a library to make writing a vnc server easy
 
 %description
