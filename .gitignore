@@ -1,0 +1,6 @@
+RPMS
+libvncserver/documentation.list
+libvncserver/test/tjbench
+libvncserver/test/tjunittest
+libvncserver/vncterm/linuxvnc
+libvncserver/vncterm/vncommand
