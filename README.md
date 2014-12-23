@@ -45,3 +45,28 @@ exit
 ```
 
 * Sync your SDK with the target. To do so open in a browser [http://localhost:8080/C/targets/SailfishOS-armv7hl](http://localhost:8080/C/targets/SailfishOS-armv7hl) and click on the button **sync**
+
+## Clone repo for upstream updates
+```
+git clone git@github.com:mer-qa/libvncserver.git
+cd libvncserver
+git submodule init
+git submodule update
+cd upstream/
+git checkout -B reference-branch HEAD
+cd ..
+git remote add -f --no-tags upstream upstream
+git branch reference-branch upstream/reference-branch
+```
+
+### Update upstream
+Instead of ```master``` also a tag or branch can be given
+```
+cd upstream/
+git checkout master
+git fetch origin
+git checkout -B reference-branch master
+cd ..
+git commit -a -m "[update] update to upstream X.Y.Z"
+git subtree pull --squash --prefix=libVNCserver upstream reference-branch
+```
