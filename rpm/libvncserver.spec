@@ -1,6 +1,6 @@
 # Note that this is NOT a relocatable package
 Name:           LibVNCServer
-Version:        0.9.9.29git7b9fc019
+Version:        0.9.10
 Release:        1
 License:        GPL
 Group:          Libraries/Network
@@ -8,6 +8,9 @@ Packager:       Reto Zingg <reto.zingg@jolla.com>
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  libtool
 Summary: a library to make writing a vnc server easy
 
 %description
@@ -24,7 +27,6 @@ LibVNCServer was put together and is (actively ;-) maintained by
 Johannes Schindelin <Johannes.Schindelin@gmx.de>
 
 %package devel
-Requires:     %{name} = %{version}
 Summary:      Header Files for %{name} 
 Group:        Libraries/Network
 Requires:     %{name} = %{version}
@@ -39,14 +41,8 @@ Header Files for %{name}.
 ./autogen.sh
 %configure --without-websockets \
            --without-crypt \
-           --without-crypto \
-           --without-ssl \
            --without-gnutls \
            --without-gcrypt \
-           --without-x \
-           --without-x11vnc \
-           --without-v4l \
-           --without-avahi \
            --disable-static
 make
 
@@ -54,7 +50,6 @@ make
 [ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
 # make install prefix=%{buildroot}%{_prefix}
 %makeinstall includedir="%{buildroot}%{_includedir}/rfb"
-rm %{buildroot}/%{_bindir}/linuxvnc
 rm %{buildroot}/%{_libdir}/libvncclient.la %{buildroot}/%{_libdir}/libvncserver.la
 
 %clean
