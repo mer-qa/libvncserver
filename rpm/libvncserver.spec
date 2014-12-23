@@ -33,7 +33,7 @@ Requires:     %{name} = %{version}
 Header Files for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}/libvncserver
+%setup -q -n %{name}-%{version}/libVNCserver
 
 %build
 ./autogen.sh
