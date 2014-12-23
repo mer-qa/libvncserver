@@ -59,12 +59,15 @@ git remote add -f --no-tags upstream upstream
 git branch reference-branch upstream/reference-branch
 ```
 
-### Update upstream
-Instead of ```master``` also a tag or branch can be given
+### Update to upstream master
 ```
 cd upstream/
 git checkout master
 git fetch origin
+```
+Instead of ```master``` also a tag or branch can be given, just ensure that the branch contains the new upstream code you want.
+```
+git merge origin master
 git checkout -B reference-branch master
 cd ..
 git commit -a -m "[update] update to upstream X.Y.Z"
