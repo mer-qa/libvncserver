@@ -2,7 +2,8 @@
 Name:           LibVNCServer
 Version:        0.9.10
 Release:        1
-License:        GPL
+License:        GPLv2+ and MIT and BSD-2-Clause
+URL:            https://github.com/LibVNC/libvncserver
 Group:          Libraries/Network
 Packager:       Reto Zingg <reto.zingg@jolla.com>
 Source:         %{name}-%{version}.tar.gz
@@ -28,7 +29,6 @@ Johannes Schindelin <Johannes.Schindelin@gmx.de>
 
 %package devel
 Summary:      Header Files for %{name} 
-Group:        Libraries/Network
 Requires:     %{name} = %{version}
 
 %description devel
