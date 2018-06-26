@@ -1,3 +1,3 @@
-[submodule "upstream"]
-	path = upstream
+[submodule "libvncserver"]
+	path = libvncserver
 	url = https://github.com/LibVNC/libvncserver.git

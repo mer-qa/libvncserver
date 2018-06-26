@@ -1,11 +1,10 @@
 # Note that this is NOT a relocatable package
-Name:           LibVNCServer
+Name:           libvncserver
 Version:        0.9.10
 Release:        1
 License:        GPLv2+ and MIT and BSD-2-Clause
 URL:            https://github.com/LibVNC/libvncserver
 Group:          Libraries/Network
-Packager:       Reto Zingg <reto.zingg@jolla.com>
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  pkgconfig(zlib)
@@ -35,7 +34,7 @@ Requires:     %{name} = %{version}
 Header Files for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}/libVNCserver
+%setup -q -n %{name}-%{version}/libvncserver
 
 %build
 ./autogen.sh
@@ -72,11 +71,4 @@ rm %{buildroot}/%{_libdir}/libvncclient.la %{buildroot}/%{_libdir}/libvncserver.
 %{_bindir}/libvncserver-config
 %{_libdir}/pkgconfig/libvncclient.pc
 %{_libdir}/pkgconfig/libvncserver.pc
-
-%changelog
-* Fri Aug 19 2005 Alberto Lusiani <alusiani@gmail.com> release 2
-- create separate package for x11vnc to prevent conflicts with x11vnc rpm
-- create devel package, needed to compile but not needed for running
-* Sun Feb 9 2003 Johannes Schindelin
-- created libvncserver.spec.in
 
