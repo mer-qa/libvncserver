@@ -3,7 +3,7 @@ Name:           libvncserver
 Version:        0.9.10
 Release:        1
 License:        GPLv2+ and MIT and BSD-2-Clause
-URL:            https://github.com/LibVNC/libvncserver
+URL:            https://github.com/mer-qa/libvncserver
 Group:          Libraries/Network
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  libjpeg-turbo-devel
