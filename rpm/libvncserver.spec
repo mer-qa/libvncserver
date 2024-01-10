@@ -1,6 +1,6 @@
 # Note that this is NOT a relocatable package
 Name:           libvncserver
-Version:        0.9.10
+Version:        0.9.14
 Release:        1
 License:        GPLv2+ and MIT and BSD-2-Clause
 URL:            https://github.com/mer-qa/libvncserver
@@ -9,7 +9,7 @@ BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libssl)
-BuildRequires:  libtool
+BuildRequires:  cmake
 Summary: a library to make writing a vnc server easy
 
 %description
@@ -36,19 +36,11 @@ Header Files for %{name}.
 %setup -q -n %{name}-%{version}/libvncserver
 
 %build
-./autogen.sh
-%configure --without-websockets \
-           --without-crypt \
-           --without-gnutls \
-           --without-gcrypt \
-           --disable-static
-make
+%cmake .
+%cmake_build
 
 %install
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
-# make install prefix=%{buildroot}%{_prefix}
-%makeinstall includedir="%{buildroot}%{_includedir}/rfb"
-rm %{buildroot}/%{_libdir}/libvncclient.la %{buildroot}/%{_libdir}/libvncserver.la
+%cmake_install
 
 %clean
 [ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
@@ -60,14 +52,13 @@ rm %{buildroot}/%{_libdir}/libvncclient.la %{buildroot}/%{_libdir}/libvncserver.
 
 %files
 %defattr(-,root,root)
-%doc README INSTALL AUTHORS ChangeLog NEWS TODO 
+%doc README.md AUTHORS ChangeLog NEWS.md
 %{_libdir}/libvncclient.so*
 %{_libdir}/libvncserver.so*
 
 %files devel
 %defattr(-,root,root)
 %{_includedir}/rfb/*
-%{_bindir}/libvncserver-config
 %{_libdir}/pkgconfig/libvncclient.pc
 %{_libdir}/pkgconfig/libvncserver.pc
-
+%{_libdir}/cmake/LibVNCServer
